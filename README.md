@@ -111,7 +111,73 @@ npm run preview
 
 ---
 
-## 四、交付方式：GitHub Pages（老師指定的方式）
+## 五、日常維護：以後要改網站怎麼做
+
+### ⚠ 先搞懂「兩個資料夾」
+
+這個專案在電腦上有兩份，**用途不同**：
+
+| 位置 | 用途 | 有 `node_modules` |
+|---|---|---|
+| `C:\Users\USER\Desktop\cv-github\Yang-Heng-Hsun` | ⭐ **主要工作地點**（連著 GitHub，可 push） | ✅ 有 |
+| `C:\Users\USER\Aisha-Agent\personalCV` | 備份／存檔用 | ✅ 有 |
+
+**建議：以後都在桌面那份改**，這樣「改完 → 推上去」在同一個地方完成。
+
+### 改網站的完整流程
+
+```powershell
+cd C:\Users\USER\Desktop\cv-github\Yang-Heng-Hsun
+
+# 1. 先開本機預覽，邊改邊看
+npm run dev          # 然後開 http://localhost:5173
+
+# 2. 改檔案（內容在哪個檔案，見第六節的對照表）
+
+# 3. 改完推上去
+git add .
+git commit -m "說明你改了什麼"
+git push
+
+# 4. 等約 1 分鐘 → 網站自動更新
+```
+
+改完後可以看這個網址確認部署狀態：
+
+```
+https://github.com/hheng1161-ctrl/Yang-Heng-Hsun/actions
+```
+
+### ⚠ 三個絕對不要做的事
+
+| 不要 | 為什麼 |
+|---|---|
+| **不要把 `dist/` 推上去** | `.gitignore` 已經擋掉了。`dist/` 是由 GitHub Actions 在雲端自動產生，你推上去只會造成混亂 |
+| **不要手動改 repo 根目錄的 `index.html`** | 那是 Vite 的**開發入口**（指向 `/src/main.jsx`），不是給 GitHub Pages 用的。真正上線的 `index.html` 是建置時產生的 |
+| **不要把 Pages 的 Source 改回「Deploy from a branch」** | 那樣它會去讀原始碼而不是建置產物 → **網站會變成空白**（2026-10-04 實際發生過一次，已修正） |
+
+### 部署原理（為什麼要這樣設定）
+
+```
+你 push 原始碼
+    ↓
+GitHub Actions 收到通知（.github/workflows/deploy.yml）
+    ↓
+在雲端執行 npm ci → npm run build
+    ↓
+產生 dist/（建置後的成品）
+    ↓
+把 dist/ 發佈到 GitHub Pages
+    ↓
+網站更新（約 1 分鐘）
+```
+
+**Pages 的 Source 必須是「GitHub Actions」**，因為我們推上去的是原始碼，
+需要有人先把它編譯成瀏覽器看得懂的檔案。
+
+---
+
+## 六、交付方式：GitHub Pages（老師指定的方式）
 
 ### 一次性設定（約 3 分鐘）
 
