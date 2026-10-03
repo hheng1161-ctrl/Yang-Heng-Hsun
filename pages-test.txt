@@ -1,7 +1,0 @@
-﻿這是一個測試檔案，用來確認 GitHub Pages 是從哪裡讀取網站內容。
-
-建立時間：2026-10-04 00:13:29
-用途：確認 build_type 是 legacy（讀分支檔案）還是 workflow（讀 Actions 產物）
-
-如果這個檔案出現在網站上 → 表示 Pages 讀的是分支檔案
-如果沒有出現 → 表示 Pages 讀的是 Actions 部署的產物（正確）
