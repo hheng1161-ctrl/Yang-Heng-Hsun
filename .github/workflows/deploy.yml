@@ -1,0 +1,70 @@
+# 自動部署到 GitHub Pages
+#
+# 啟用方式（只需做一次）：
+#   1. 把這個專案推上 GitHub
+#   2. 到 repo 的 Settings → Pages
+#   3. Source 選「GitHub Actions」（不是 Deploy from a branch）
+#   4. 之後每次 push 到 main，就會自動建置並部署
+#
+# 部署完成後網址會是：
+#   https://<你的帳號>.github.io/<repo 名稱>/
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # 也可以在 Actions 頁面手動觸發
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同時只允許一次部署；新的 push 會取消進行中的舊部署
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 取出原始碼
+        uses: actions/checkout@v4
+
+      - name: 安裝 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: 安裝相依套件
+        run: npm ci
+
+      - name: 建置
+        run: npm run build
+
+      # GitHub Pages 對不存在的路徑會回 404。
+      # 複製一份 index.html 當 404 頁，讓所有路徑都能正常載入。
+      - name: 補上 404.html（避免直接開深層網址時 404）
+        run: cp dist/index.html dist/404.html
+
+      - name: 設定 Pages
+        uses: actions/configure-pages@v5
+
+      - name: 上傳建置產物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

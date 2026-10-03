@@ -1,0 +1,25 @@
+# 相依套件（由 npm ci 重新安裝，不需要進版控）
+node_modules/
+
+# 建置產物（由 GitHub Actions 自動產生，不需要進版控）
+dist/
+dist-single/
+
+# 編輯器／系統檔案
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.tmpdir/
+
+# 日誌
+*.log
+npm-debug.log*
+
+# ⚠ 注意：以下檔案「絕對不要」推上公開 repo
+#   - .env / .env.local（環境變數、金鑰）
+#   - 任何含個資的原始檔（手機、身分證、住址）
+#   - 未去識別化的履歷原始文件
+.env
+.env.local
+.env.*.local
