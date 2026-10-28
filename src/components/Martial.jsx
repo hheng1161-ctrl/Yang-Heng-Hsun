@@ -25,7 +25,7 @@ export default function Martial() {
   return (
     <section id="martial" className="max-w-5xl mx-auto px-5 py-3 md:py-4">
       <div className="glass rounded-[2rem] p-6 md:p-10">
-        <p className="text-xs tracking-[0.25em] uppercase text-gold font-medium">05 — Martial Arts</p>
+        <p className="text-xs tracking-[0.25em] uppercase text-gold font-medium">06 — Martial Arts</p>
         <h2 className="section-title font-serif text-3xl md:text-4xl font-bold mt-3 mb-10">
           武術 <span className="text-gold text-2xl">八極拳</span>
         </h2>

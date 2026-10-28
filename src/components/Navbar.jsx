@@ -36,6 +36,17 @@ export default function Navbar({ isLight, onToggleTheme }) {
         <div className="flex items-center gap-2">
           <button
             type="button"
+            onClick={() => window.print()}
+            aria-label="列印或存成 PDF"
+            title="列印／存成 PDF"
+            className="no-print w-10 h-10 rounded-full grid place-items-center border border-paper-line dark:border-ink-line
+                       hover:border-gold hover:text-gold transition-colors duration-200"
+          >
+            <i className="fa-solid fa-print" />
+          </button>
+
+          <button
+            type="button"
             onClick={onToggleTheme}
             aria-label="切換深淺色主題"
             className="w-10 h-10 rounded-full grid place-items-center border border-paper-line dark:border-ink-line

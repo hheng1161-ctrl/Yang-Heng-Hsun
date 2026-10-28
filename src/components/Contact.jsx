@@ -22,7 +22,7 @@ export default function Contact({ onOpenForm, onToast }) {
     <section id="contact" className="max-w-5xl mx-auto px-5 py-3 md:py-4">
       <div className="glass rounded-[2rem] p-6 md:p-10">
         <div className="py-20 text-center">
-          <p className="text-xs tracking-[0.25em] uppercase text-gold font-medium">06 — Contact</p>
+          <p className="text-xs tracking-[0.25em] uppercase text-gold font-medium">07 — Contact</p>
           <h2 className="section-title font-serif text-3xl md:text-4xl font-bold mt-3">歡迎與我聯絡</h2>
           <p className="text-ink/65 dark:text-paper/65 mt-4 max-w-xl mx-auto leading-relaxed">
             無論是工程技術、品質安全管理，或健康產業的經營合作，都歡迎交流。

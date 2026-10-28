@@ -30,6 +30,7 @@ export const NAV_ITEMS = [
   { href: '#about', label: '關於', icon: 'fa-solid fa-user' },
   { href: '#career', label: '學經歷', icon: 'fa-solid fa-timeline' },
   { href: '#projects', label: '工程實績', icon: 'fa-solid fa-helmet-safety' },
+  { href: '#works', label: '作品', icon: 'fa-solid fa-code' },
   { href: '#certs', label: '證照', icon: 'fa-solid fa-certificate' },
   { href: '#martial', label: '武術', icon: 'fa-solid fa-hand-fist' },
   { href: '#contact', label: '聯絡', icon: 'fa-solid fa-envelope' },
