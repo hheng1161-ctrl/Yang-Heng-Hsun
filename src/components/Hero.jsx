@@ -5,7 +5,7 @@ import portraitUrl from '../assets/portrait.jpg?inline';
 const STATS = [
   { value: 15, unit: '年', label: '產業實務經驗' },
   { value: 10, unit: '張', label: '專業證照' },
-  { value: 4, unit: '項', label: '大型工程專案' },
+  { value: 6, unit: '項', label: '工程專案' },
   { value: 21, unit: '項', label: '武術賽事裁判聘任' },
 ];
 
